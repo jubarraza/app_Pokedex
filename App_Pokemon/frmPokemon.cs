@@ -22,12 +22,8 @@ namespace App_Pokemon
 
         private void frmPokemon_Load(object sender, EventArgs e)
         {
-            PokemonNegocio negocio = new PokemonNegocio();
-            listaPokemon = negocio.Listar();
-
-            dgvPokemon.DataSource = listaPokemon;
-            dgvPokemon.Columns["UrlImagen"].Visible = false;
-            //CargarImagen(listaPokemon[0].UrlImagen);
+            Cargar();
+            
         }
 
         private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
@@ -50,7 +46,30 @@ namespace App_Pokemon
 
         }
 
+        private void Cargar()
+        {
+            try
+            {
+                PokemonNegocio negocio = new PokemonNegocio();
+                listaPokemon = negocio.Listar();
+                dgvPokemon.DataSource = listaPokemon;
+                dgvPokemon.Columns["UrlImagen"].Visible = false;
+                //CargarImagen(listaPokemon[0].UrlImagen);
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
+        private void btn_Agregar_Click(object sender, EventArgs e)
+        {
+            frmAltaPokemon alta = new frmAltaPokemon();
+            alta.ShowDialog();
+            //actualizar la carga de la base de datos
+            Cargar();
+
+        }
     }
 }

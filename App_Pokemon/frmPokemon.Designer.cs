@@ -31,18 +31,28 @@
             this.dgvPokemon = new System.Windows.Forms.DataGridView();
             this.pbPokemon = new System.Windows.Forms.PictureBox();
             this.lbl_Titulo = new System.Windows.Forms.Label();
+            this.btn_Agregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPokemon)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPokemon
             // 
+            this.dgvPokemon.AllowUserToAddRows = false;
+            this.dgvPokemon.AllowUserToDeleteRows = false;
+            this.dgvPokemon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPokemon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPokemon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPokemon.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPokemon.Location = new System.Drawing.Point(415, 149);
             this.dgvPokemon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvPokemon.MultiSelect = false;
             this.dgvPokemon.Name = "dgvPokemon";
+            this.dgvPokemon.ReadOnly = true;
             this.dgvPokemon.RowHeadersWidth = 51;
             this.dgvPokemon.RowTemplate.Height = 24;
+            this.dgvPokemon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPokemon.Size = new System.Drawing.Size(561, 207);
             this.dgvPokemon.TabIndex = 0;
             this.dgvPokemon.SelectionChanged += new System.EventHandler(this.dgvPokemon_SelectionChanged);
@@ -67,12 +77,23 @@
             this.lbl_Titulo.Text = "Mi PokeDex";
             this.lbl_Titulo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btn_Agregar
+            // 
+            this.btn_Agregar.Location = new System.Drawing.Point(424, 421);
+            this.btn_Agregar.Name = "btn_Agregar";
+            this.btn_Agregar.Size = new System.Drawing.Size(156, 33);
+            this.btn_Agregar.TabIndex = 3;
+            this.btn_Agregar.Text = "Agregar Pokemon";
+            this.btn_Agregar.UseVisualStyleBackColor = true;
+            this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
+            // 
             // frmPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(988, 527);
+            this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.lbl_Titulo);
             this.Controls.Add(this.pbPokemon);
             this.Controls.Add(this.dgvPokemon);
@@ -94,6 +115,7 @@
         private System.Windows.Forms.DataGridView dgvPokemon;
         private System.Windows.Forms.PictureBox pbPokemon;
         private System.Windows.Forms.Label lbl_Titulo;
+        private System.Windows.Forms.Button btn_Agregar;
     }
 }
 

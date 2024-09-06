@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class ElementoNegocio
     {
-        public List<ElementoNegocio> listar() {
+        public List<Elemento> listar() {
         
             List<Elemento> lista = new List<Elemento>();
             AccesoDatos datos = new AccesoDatos();
@@ -29,6 +29,8 @@ namespace Negocio
                     lista.Add(aux);
                 }
 
+                return lista;
+
             }
             catch (Exception ex)
             {
@@ -40,10 +42,6 @@ namespace Negocio
                 datos.CerrarConexion();
             }
             
-            
-            
-            
-            return new List<ElementoNegocio>();
         }
     }
 }
