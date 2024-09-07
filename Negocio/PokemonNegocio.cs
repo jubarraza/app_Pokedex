@@ -10,7 +10,6 @@ namespace Negocio
 {
     public class PokemonNegocio
     {
-
         public List<Pokemon> Listar() 
         {
             List<Pokemon> lista = new List<Pokemon>();
@@ -19,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.SetearConsulta("SELECT p.Numero, p.Nombre, p.Descripcion, p.UrlImagen, e.Descripcion as Tipo, d.Descripcion as Debilidad, p.IdTipo, p.IdDebilidad, p.Id FROM POKEMONS p INNER JOIN ELEMENTOS e ON p.IdTipo = e.Id INNER JOIN ELEMENTOS d on p.IdDebilidad = d.Id ORDER BY Numero ASC");
+                datos.SetearConsulta("SELECT p.Numero, p.Nombre, p.Descripcion, p.UrlImagen, e.Descripcion as Tipo, d.Descripcion as Debilidad, p.IdTipo, p.IdDebilidad, p.Id FROM POKEMONS p INNER JOIN ELEMENTOS e ON p.IdTipo = e.Id INNER JOIN ELEMENTOS d on p.IdDebilidad = d.Id WHERE p.Activo = 1 ORDER BY Numero ASC");
 
                 datos.EjecutarLectura();
 
@@ -126,5 +125,67 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        public void EliminarLogico(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("UPDATE POKEMONS SET Activo = 0 WHERE Id = @Id");
+                datos.SetearParametro("@Id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<Pokemon> ListarEliminados()
+        {
+            List<Pokemon> lista = new List<Pokemon>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("SELECT p.Numero, p.Nombre, p.Descripcion, p.UrlImagen, e.Descripcion as Tipo, d.Descripcion as Debilidad, p.IdTipo, p.IdDebilidad, p.Id FROM POKEMONS p INNER JOIN ELEMENTOS e ON p.IdTipo = e.Id INNER JOIN ELEMENTOS d on p.IdDebilidad = d.Id WHERE p.Activo = 0 ORDER BY Numero ASC");
+
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Pokemon aux = new Pokemon();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Numero = datos.Lector.GetInt32(0);
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    if (!(datos.Lector["UrlImagen"] is DBNull))
+                    {
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+                    }
+
+                    aux.Tipo = new Elemento();
+                    aux.Tipo.ID = (int)datos.Lector["IdTipo"];
+                    aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
+                    aux.Debilidad = new Elemento();
+                    aux.Debilidad.ID = (int)datos.Lector["IdDebilidad"];
+                    aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.CerrarConexion(); }
+
+        }
+
     }
 }

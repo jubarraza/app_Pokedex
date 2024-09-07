@@ -28,8 +28,11 @@ namespace App_Pokemon
 
         private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
         {
-            Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
-            CargarImagen(seleccionado.UrlImagen);
+            if(dgvPokemon.CurrentRow != null)
+            {
+                Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+                CargarImagen(seleccionado.UrlImagen);
+            }
         }
 
         private void CargarImagen(string imagen) 
@@ -48,13 +51,13 @@ namespace App_Pokemon
 
         private void Cargar()
         {
+            PokemonNegocio negocio = new PokemonNegocio();
+            
             try
             {
-                PokemonNegocio negocio = new PokemonNegocio();
                 listaPokemon = negocio.Listar();
                 dgvPokemon.DataSource = listaPokemon;
-                dgvPokemon.Columns["UrlImagen"].Visible = false;
-                dgvPokemon.Columns["Id"].Visible = false;
+                ocultarColumnas();
                 //CargarImagen(listaPokemon[0].UrlImagen);
             }
             catch (Exception ex)
@@ -86,6 +89,17 @@ namespace App_Pokemon
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
+            Eliminar();
+            
+        }
+
+        private void btn_EliminarLogico_Click(object sender, EventArgs e)
+        {
+            Eliminar(true);
+        }
+
+        private void Eliminar(bool logico = false)
+        {
             PokemonNegocio pkmNegocio = new PokemonNegocio();
             Pokemon seleccionado;
             try
@@ -95,7 +109,15 @@ namespace App_Pokemon
                 if (respuesta == DialogResult.Yes)
                 {
                     seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
-                    pkmNegocio.Eliminar(seleccionado.Id);
+
+                    if (!logico)
+                    {
+                        pkmNegocio.Eliminar(seleccionado.Id);
+                    }
+                    else 
+                    {
+                        pkmNegocio.EliminarLogico(seleccionado.Id);
+                    }
                     Cargar();
                 }
 
@@ -105,7 +127,31 @@ namespace App_Pokemon
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            List<Pokemon> listaFiltrada;
+            string filtro = txt_Buscador.Text;
             
+            if(filtro != "")
+            {
+                listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToLower().Contains(filtro.ToLower()));
+            }
+            else
+            {
+                listaFiltrada = listaPokemon;
+            }
+
+            dgvPokemon.DataSource = null;
+            dgvPokemon.DataSource = listaFiltrada;
+            ocultarColumnas();
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvPokemon.Columns["UrlImagen"].Visible = false;
+            dgvPokemon.Columns["Id"].Visible = false;
         }
     }
 }

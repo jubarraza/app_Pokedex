@@ -34,6 +34,11 @@
             this.btn_Agregar = new System.Windows.Forms.Button();
             this.btn_Modificar = new System.Windows.Forms.Button();
             this.btn_Eliminar = new System.Windows.Forms.Button();
+            this.btn_EliminarLogico = new System.Windows.Forms.Button();
+            this.lbl_Restaurar = new System.Windows.Forms.Button();
+            this.lbl_Filtro = new System.Windows.Forms.Label();
+            this.txt_Buscador = new System.Windows.Forms.TextBox();
+            this.btn_Buscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPokemon)).BeginInit();
             this.SuspendLayout();
@@ -109,12 +114,63 @@
             this.btn_Eliminar.UseVisualStyleBackColor = true;
             this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
+            // btn_EliminarLogico
+            // 
+            this.btn_EliminarLogico.Location = new System.Drawing.Point(810, 471);
+            this.btn_EliminarLogico.Name = "btn_EliminarLogico";
+            this.btn_EliminarLogico.Size = new System.Drawing.Size(156, 33);
+            this.btn_EliminarLogico.TabIndex = 6;
+            this.btn_EliminarLogico.Text = "Eliminar L Pokemon";
+            this.btn_EliminarLogico.UseVisualStyleBackColor = true;
+            this.btn_EliminarLogico.Click += new System.EventHandler(this.btn_EliminarLogico_Click);
+            // 
+            // lbl_Restaurar
+            // 
+            this.lbl_Restaurar.Location = new System.Drawing.Point(620, 471);
+            this.lbl_Restaurar.Name = "lbl_Restaurar";
+            this.lbl_Restaurar.Size = new System.Drawing.Size(156, 33);
+            this.lbl_Restaurar.TabIndex = 7;
+            this.lbl_Restaurar.Text = "Restaurar Pokemon";
+            this.lbl_Restaurar.UseVisualStyleBackColor = true;
+            // 
+            // lbl_Filtro
+            // 
+            this.lbl_Filtro.AutoSize = true;
+            this.lbl_Filtro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Filtro.Location = new System.Drawing.Point(455, 108);
+            this.lbl_Filtro.Name = "lbl_Filtro";
+            this.lbl_Filtro.Size = new System.Drawing.Size(56, 22);
+            this.lbl_Filtro.TabIndex = 8;
+            this.lbl_Filtro.Text = "Filtro";
+            // 
+            // txt_Buscador
+            // 
+            this.txt_Buscador.Location = new System.Drawing.Point(517, 108);
+            this.txt_Buscador.Name = "txt_Buscador";
+            this.txt_Buscador.Size = new System.Drawing.Size(221, 24);
+            this.txt_Buscador.TabIndex = 9;
+            // 
+            // btn_Buscar
+            // 
+            this.btn_Buscar.Location = new System.Drawing.Point(744, 108);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(92, 24);
+            this.btn_Buscar.TabIndex = 10;
+            this.btn_Buscar.Text = "Buscar";
+            this.btn_Buscar.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
+            // 
             // frmPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(988, 527);
+            this.Controls.Add(this.btn_Buscar);
+            this.Controls.Add(this.txt_Buscador);
+            this.Controls.Add(this.lbl_Filtro);
+            this.Controls.Add(this.lbl_Restaurar);
+            this.Controls.Add(this.btn_EliminarLogico);
             this.Controls.Add(this.btn_Eliminar);
             this.Controls.Add(this.btn_Modificar);
             this.Controls.Add(this.btn_Agregar);
@@ -142,6 +198,11 @@
         private System.Windows.Forms.Button btn_Agregar;
         private System.Windows.Forms.Button btn_Modificar;
         private System.Windows.Forms.Button btn_Eliminar;
+        private System.Windows.Forms.Button btn_EliminarLogico;
+        private System.Windows.Forms.Button lbl_Restaurar;
+        private System.Windows.Forms.Label lbl_Filtro;
+        private System.Windows.Forms.TextBox txt_Buscador;
+        private System.Windows.Forms.Button btn_Buscar;
     }
 }
 
