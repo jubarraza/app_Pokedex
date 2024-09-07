@@ -137,11 +137,55 @@ namespace App_Pokemon
             }
         }
 
+        private bool ValidarFiltro()
+        {
+            if(cb_Campo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione el Campo para Buscar");
+                return true; //no tiene campo
+            }
+            if (cb_Criterio.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor seleccione el Criterio para Buscar");
+                return true; //no tiene criterio    
+            }
+            if(cb_Campo.SelectedItem.ToString() == "Numero")
+            {
+                if (string.IsNullOrEmpty(txt_FiltroAv.Text))
+                {
+                    MessageBox.Show("Se debe ingresar un valor a buscar");
+                    return true; //no tiene criterio
+                }
+                if (!(SoloNumeros(txt_FiltroAv.Text)))
+                {
+                    MessageBox.Show("Solo se aceptan valores numericos");
+                    return true; //no tiene criterio
+                }
+
+            }
+
+            return false; //tiene algo seleccionado
+        }
+
+        private bool SoloNumeros(string valor)
+        {
+            foreach(char caracter in valor)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+
+            return true;
+        }
+
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             PokemonNegocio pokemonNegocio = new PokemonNegocio();
             try
             {
+                if(ValidarFiltro()) {
+                    return;
+                }
                 string campo = cb_Campo.SelectedItem.ToString();
                 string criterio = cb_Criterio.SelectedItem.ToString();
                 string filtro = txt_FiltroAv.Text;

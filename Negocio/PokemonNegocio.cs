@@ -215,11 +215,6 @@ namespace Negocio
                 
                 if(campo == "Numero")
                 {
-                    if (filtro.Length == 0)
-                    {
-                        filtro = "0";
-                    }
-
                     switch (criterio)
                     {
 
