@@ -23,6 +23,9 @@ namespace App_Pokemon
         private void frmPokemon_Load(object sender, EventArgs e)
         {
             Cargar();
+            cb_Campo.Items.Add("Numero");
+            cb_Campo.Items.Add("Nombre");
+            cb_Campo.Items.Add("Descripcion");
             
         }
 
@@ -131,21 +134,19 @@ namespace App_Pokemon
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            List<Pokemon> listaFiltrada;
-            string filtro = txt_Buscador.Text;
+            PokemonNegocio pokemonNegocio = new PokemonNegocio();
+            try
+            {
+                string campo = cb_Campo.SelectedItem.ToString();
+                string criterio = cb_Criterio.SelectedItem.ToString();
+                string filtro = txt_FiltroAv.Text;
+                dgvPokemon.DataSource = pokemonNegocio.Filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             
-            if(filtro != "")
-            {
-                listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToLower().Contains(filtro.ToLower()) || x.Tipo.Descripcion.ToLower().Contains(filtro.ToLower()));
-            }
-            else
-            {
-                listaFiltrada = listaPokemon;
-            }
-
-            dgvPokemon.DataSource = null;
-            dgvPokemon.DataSource = listaFiltrada;
-            ocultarColumnas();
         }
 
         private void ocultarColumnas()
@@ -162,5 +163,42 @@ namespace App_Pokemon
 
         }
 
+        private void txt_Buscador_TextChanged(object sender, EventArgs e)
+        {
+            List<Pokemon> listaFiltrada;
+            string filtro = txt_Buscador.Text;
+
+            if (filtro.Length >= 2)
+            {
+                listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToLower().Contains(filtro.ToLower()) || x.Tipo.Descripcion.ToLower().Contains(filtro.ToLower()));
+            }
+            else
+            {
+                listaFiltrada = listaPokemon;
+            }
+
+            dgvPokemon.DataSource = null;
+            dgvPokemon.DataSource = listaFiltrada;
+            ocultarColumnas();
+        }
+
+        private void cb_Campo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cb_Campo.SelectedItem.ToString();
+            if(opcion == "Numero")
+            {
+                cb_Criterio.Items.Clear();
+                cb_Criterio.Items.Add("Mayor a");
+                cb_Criterio.Items.Add("Menor a");
+                cb_Criterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cb_Criterio.Items.Clear();
+                cb_Criterio.Items.Add("Comienza con");
+                cb_Criterio.Items.Add("Termina con");
+                cb_Criterio.Items.Add("Contiene");
+            }
+        }
     }
 }
