@@ -33,6 +33,7 @@
             this.lbl_Titulo = new System.Windows.Forms.Label();
             this.btn_Agregar = new System.Windows.Forms.Button();
             this.btn_Modificar = new System.Windows.Forms.Button();
+            this.btn_Eliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPokemon)).BeginInit();
             this.SuspendLayout();
@@ -90,7 +91,7 @@
             // 
             // btn_Modificar
             // 
-            this.btn_Modificar.Location = new System.Drawing.Point(604, 421);
+            this.btn_Modificar.Location = new System.Drawing.Point(620, 421);
             this.btn_Modificar.Name = "btn_Modificar";
             this.btn_Modificar.Size = new System.Drawing.Size(156, 33);
             this.btn_Modificar.TabIndex = 4;
@@ -98,12 +99,23 @@
             this.btn_Modificar.UseVisualStyleBackColor = true;
             this.btn_Modificar.Click += new System.EventHandler(this.btn_Modificar_Click);
             // 
+            // btn_Eliminar
+            // 
+            this.btn_Eliminar.Location = new System.Drawing.Point(810, 421);
+            this.btn_Eliminar.Name = "btn_Eliminar";
+            this.btn_Eliminar.Size = new System.Drawing.Size(156, 33);
+            this.btn_Eliminar.TabIndex = 5;
+            this.btn_Eliminar.Text = "Eliminar F Pokemon";
+            this.btn_Eliminar.UseVisualStyleBackColor = true;
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
+            // 
             // frmPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(988, 527);
+            this.Controls.Add(this.btn_Eliminar);
             this.Controls.Add(this.btn_Modificar);
             this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.lbl_Titulo);
@@ -129,6 +141,7 @@
         private System.Windows.Forms.Label lbl_Titulo;
         private System.Windows.Forms.Button btn_Agregar;
         private System.Windows.Forms.Button btn_Modificar;
+        private System.Windows.Forms.Button btn_Eliminar;
     }
 }
 

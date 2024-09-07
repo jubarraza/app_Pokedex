@@ -83,5 +83,29 @@ namespace App_Pokemon
             modificar.ShowDialog();
             Cargar();
         }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            PokemonNegocio pkmNegocio = new PokemonNegocio();
+            Pokemon seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Desea eliminar el registro?", "Eliminar Pokemon", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+                    pkmNegocio.Eliminar(seleccionado.Id);
+                    Cargar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
     }
 }
