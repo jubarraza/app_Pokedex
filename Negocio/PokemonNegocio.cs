@@ -19,13 +19,14 @@ namespace Negocio
 
             try
             {
-                datos.SetearConsulta("SELECT p.Numero, p.Nombre, p.Descripcion, p.UrlImagen, e.Descripcion as Tipo, d.Descripcion as Debilidad FROM POKEMONS p INNER JOIN ELEMENTOS e ON p.IdTipo = e.Id INNER JOIN ELEMENTOS d on p.IdDebilidad = d.Id ORDER BY Numero ASC");
+                datos.SetearConsulta("SELECT p.Numero, p.Nombre, p.Descripcion, p.UrlImagen, e.Descripcion as Tipo, d.Descripcion as Debilidad, p.IdTipo, p.IdDebilidad, p.Id FROM POKEMONS p INNER JOIN ELEMENTOS e ON p.IdTipo = e.Id INNER JOIN ELEMENTOS d on p.IdDebilidad = d.Id ORDER BY Numero ASC");
 
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Pokemon aux = new Pokemon();
+                    aux.Id = (int)datos.Lector["Id"];
                     aux.Numero = datos.Lector.GetInt32(0); //pide especificacion del tipo de dato, asigna columna por indice de la consulta
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
@@ -33,15 +34,13 @@ namespace Negocio
                     {
                         aux.UrlImagen = (string)datos.Lector["UrlImagen"];
                     }
-                    //if (!(datos.Lector.IsDBNull(datos.Lector.GetOrdinal("UrlImagen"))))
-                    //{
-                    //    aux.UrlImagen = (string)datos.Lector["UrlImagen"];
-                    //}
 
-
-                    aux.Tipo = new Elemento(); //como no lo hicimos en el contructor de POKEMON creamos el elemento de su composicion
+                    //como no lo hicimos en el contructor de POKEMON creamos el elemento de su composicion
+                    aux.Tipo = new Elemento();
+                    aux.Tipo.ID = (int)datos.Lector["IdTipo"];
                     aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
                     aux.Debilidad = new Elemento();
+                    aux.Debilidad.ID = (int)datos.Lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
 
                     lista.Add(aux);
@@ -86,9 +85,29 @@ namespace Negocio
             }
         }
 
-        public void Modificar(Pokemon modificar)
+        public void Modificar(Pokemon poke)
         {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.SetearConsulta("UPDATE POKEMONS SET Numero = @Numero, Nombre = @Nombre, Descripcion = @Desc, UrlImagen = @Img, IdTipo = @IdTipo, IdDebilidad = @IdDebilidad where Id = @Id");
+                datos.SetearParametro("@Numero", poke.Numero);
+                datos.SetearParametro("@Nombre", poke.Nombre);
+                datos.SetearParametro("@Desc", poke.Descripcion);
+                datos.SetearParametro("@Img", poke.UrlImagen);
+                datos.SetearParametro("@IdTipo", poke.Tipo.ID);
+                datos.SetearParametro("@IdDebilidad", poke.Debilidad.ID);
+                datos.SetearParametro("@Id", poke.Id);
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally {  datos.CerrarConexion();}
         }
     }
 }

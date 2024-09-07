@@ -32,6 +32,7 @@
             this.pbPokemon = new System.Windows.Forms.PictureBox();
             this.lbl_Titulo = new System.Windows.Forms.Label();
             this.btn_Agregar = new System.Windows.Forms.Button();
+            this.btn_Modificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPokemon)).BeginInit();
             this.SuspendLayout();
@@ -87,12 +88,23 @@
             this.btn_Agregar.UseVisualStyleBackColor = true;
             this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
             // 
+            // btn_Modificar
+            // 
+            this.btn_Modificar.Location = new System.Drawing.Point(604, 421);
+            this.btn_Modificar.Name = "btn_Modificar";
+            this.btn_Modificar.Size = new System.Drawing.Size(156, 33);
+            this.btn_Modificar.TabIndex = 4;
+            this.btn_Modificar.Text = "Modificar Pokemon";
+            this.btn_Modificar.UseVisualStyleBackColor = true;
+            this.btn_Modificar.Click += new System.EventHandler(this.btn_Modificar_Click);
+            // 
             // frmPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(988, 527);
+            this.Controls.Add(this.btn_Modificar);
             this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.lbl_Titulo);
             this.Controls.Add(this.pbPokemon);
@@ -116,6 +128,7 @@
         private System.Windows.Forms.PictureBox pbPokemon;
         private System.Windows.Forms.Label lbl_Titulo;
         private System.Windows.Forms.Button btn_Agregar;
+        private System.Windows.Forms.Button btn_Modificar;
     }
 }
 
