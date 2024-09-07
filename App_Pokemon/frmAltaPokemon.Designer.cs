@@ -43,6 +43,7 @@
             this.txt_Url = new System.Windows.Forms.TextBox();
             this.lbl_UrlImagen = new System.Windows.Forms.Label();
             this.pb_CargaImagen = new System.Windows.Forms.PictureBox();
+            this.btn_CargarImg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pb_CargaImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,7 +96,7 @@
             this.txt_Descripcion.Location = new System.Drawing.Point(219, 132);
             this.txt_Descripcion.Multiline = true;
             this.txt_Descripcion.Name = "txt_Descripcion";
-            this.txt_Descripcion.Size = new System.Drawing.Size(260, 118);
+            this.txt_Descripcion.Size = new System.Drawing.Size(260, 58);
             this.txt_Descripcion.TabIndex = 2;
             // 
             // btn_Aceptar
@@ -158,7 +159,7 @@
             // 
             // txt_Url
             // 
-            this.txt_Url.Location = new System.Drawing.Point(219, 280);
+            this.txt_Url.Location = new System.Drawing.Point(218, 243);
             this.txt_Url.Name = "txt_Url";
             this.txt_Url.Size = new System.Drawing.Size(260, 22);
             this.txt_Url.TabIndex = 3;
@@ -168,7 +169,7 @@
             // 
             this.lbl_UrlImagen.AutoSize = true;
             this.lbl_UrlImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_UrlImagen.Location = new System.Drawing.Point(64, 277);
+            this.lbl_UrlImagen.Location = new System.Drawing.Point(63, 240);
             this.lbl_UrlImagen.Name = "lbl_UrlImagen";
             this.lbl_UrlImagen.Size = new System.Drawing.Size(126, 25);
             this.lbl_UrlImagen.TabIndex = 12;
@@ -183,12 +184,23 @@
             this.pb_CargaImagen.TabIndex = 14;
             this.pb_CargaImagen.TabStop = false;
             // 
+            // btn_CargarImg
+            // 
+            this.btn_CargarImg.Location = new System.Drawing.Point(366, 276);
+            this.btn_CargarImg.Name = "btn_CargarImg";
+            this.btn_CargarImg.Size = new System.Drawing.Size(111, 24);
+            this.btn_CargarImg.TabIndex = 15;
+            this.btn_CargarImg.Text = "Cargar imagen";
+            this.btn_CargarImg.UseVisualStyleBackColor = true;
+            this.btn_CargarImg.Click += new System.EventHandler(this.btn_CargarImg_Click);
+            // 
             // frmAltaPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(923, 529);
+            this.Controls.Add(this.btn_CargarImg);
             this.Controls.Add(this.pb_CargaImagen);
             this.Controls.Add(this.txt_Url);
             this.Controls.Add(this.lbl_UrlImagen);
@@ -231,5 +243,6 @@
         private System.Windows.Forms.TextBox txt_Url;
         private System.Windows.Forms.Label lbl_UrlImagen;
         private System.Windows.Forms.PictureBox pb_CargaImagen;
+        private System.Windows.Forms.Button btn_CargarImg;
     }
 }

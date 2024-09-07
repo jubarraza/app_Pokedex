@@ -5,16 +5,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace App_Pokemon
 {
     public partial class frmAltaPokemon : Form
     {
         private Pokemon pokemon = null;
+        private OpenFileDialog archivo = null;
+
         public frmAltaPokemon()
         {
             InitializeComponent();
@@ -58,6 +62,12 @@ namespace App_Pokemon
                 {
                     negocio.Modificar(pokemon);
                     MessageBox.Show("Modificado exitosamente");
+                }
+
+                //guardo imagen si la levanto localmente y no tiene http en la url
+                if(archivo != null && !(txt_Url.Text.ToLower().Contains("http")))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["PokeApp"] + archivo.SafeFileName);
                 }
 
                 Close();
@@ -126,6 +136,20 @@ namespace App_Pokemon
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btn_CargarImg_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "Archivos de imagen (*.jpg, *.png, *.gif)|*.jpg;*.png;*.gif";
+
+            if (archivo.ShowDialog() == DialogResult.OK) 
+            {
+                txt_Url.Text = archivo.FileName;
+                CargarImagen(archivo.FileName);
+
+            }
+
         }
     }
 }
