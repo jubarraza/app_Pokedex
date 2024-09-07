@@ -9,7 +9,7 @@ namespace Dominio
 {
     public class Pokemon
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
 
         [DisplayName("Número")] //tiene que ir inmediato arriba de la propiedad que queremos renombrar
         public int Numero { get; set; }
