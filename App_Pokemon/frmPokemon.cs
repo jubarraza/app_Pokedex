@@ -153,5 +153,14 @@ namespace App_Pokemon
             dgvPokemon.Columns["UrlImagen"].Visible = false;
             dgvPokemon.Columns["Id"].Visible = false;
         }
+
+        private void lbl_Restaurar_Click(object sender, EventArgs e)
+        {
+            frmPokemonEliminados eliminados = new frmPokemonEliminados();
+            eliminados.ShowDialog();
+            Cargar();
+
+        }
+
     }
 }

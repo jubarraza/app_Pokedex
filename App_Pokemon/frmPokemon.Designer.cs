@@ -132,6 +132,7 @@
             this.lbl_Restaurar.TabIndex = 7;
             this.lbl_Restaurar.Text = "Restaurar Pokemon";
             this.lbl_Restaurar.UseVisualStyleBackColor = true;
+            this.lbl_Restaurar.Click += new System.EventHandler(this.lbl_Restaurar_Click);
             // 
             // lbl_Filtro
             // 

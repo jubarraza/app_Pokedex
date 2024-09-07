@@ -58,6 +58,12 @@
     <Compile Include="frmPokemon.Designer.cs">
       <DependentUpon>frmPokemon.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPokemonEliminados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPokemonEliminados.Designer.cs">
+      <DependentUpon>frmPokemonEliminados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAltaPokemon.resx">
@@ -65,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPokemon.resx">
       <DependentUpon>frmPokemon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPokemonEliminados.resx">
+      <DependentUpon>frmPokemonEliminados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

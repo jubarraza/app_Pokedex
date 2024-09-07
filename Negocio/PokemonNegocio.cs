@@ -143,6 +143,24 @@ namespace Negocio
             }
         }
 
+        public void RestaurarEliminado(Pokemon poke)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                int id = poke.Id;
+                datos.SetearConsulta("UPDATE POKEMONS SET Activo = 1 WHERE Id = @Id");
+                datos.SetearParametro("@Id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public List<Pokemon> ListarEliminados()
         {
             List<Pokemon> lista = new List<Pokemon>();
