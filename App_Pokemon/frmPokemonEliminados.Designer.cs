@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPokemonEliminados));
             this.dgv_Eliminados = new System.Windows.Forms.DataGridView();
             this.pb_Img = new System.Windows.Forms.PictureBox();
             this.btn_Restaurar = new System.Windows.Forms.Button();
@@ -88,6 +89,7 @@
             this.Controls.Add(this.btn_Restaurar);
             this.Controls.Add(this.pb_Img);
             this.Controls.Add(this.dgv_Eliminados);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPokemonEliminados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pokemon Eliminados";

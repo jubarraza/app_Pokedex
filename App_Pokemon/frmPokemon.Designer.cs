@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPokemon));
             this.dgvPokemon = new System.Windows.Forms.DataGridView();
             this.pbPokemon = new System.Windows.Forms.PictureBox();
             this.lbl_Titulo = new System.Windows.Forms.Label();
@@ -265,6 +266,7 @@
             this.Controls.Add(this.pbPokemon);
             this.Controls.Add(this.dgvPokemon);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmPokemon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

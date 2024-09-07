@@ -33,8 +33,13 @@ namespace App_Pokemon
         {
             if(dgvPokemon.CurrentRow != null)
             {
+                pbPokemon.Visible = true;
                 Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
                 CargarImagen(seleccionado.UrlImagen);
+            }
+            else
+            {
+                pbPokemon.Visible = false;
             }
         }
 

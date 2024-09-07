@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAltaPokemon));
             this.lbl_Numero = new System.Windows.Forms.Label();
             this.lbl_Nombre = new System.Windows.Forms.Label();
             this.lbl_Descripcion = new System.Windows.Forms.Label();
@@ -216,6 +217,7 @@
             this.Controls.Add(this.lbl_Descripcion);
             this.Controls.Add(this.lbl_Nombre);
             this.Controls.Add(this.lbl_Numero);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAltaPokemon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Pokemon";
